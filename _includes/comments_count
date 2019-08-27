@@ -1,0 +1,6 @@
+{% if site.settings.comments.provider and page.comments_count != false %}
+  {% case site.addons.comments.provider %}
+    {% when "disqus" %}{% include comments-providers/disqus_comments_count %}
+  {% endcase %}
+{% endif %}
+

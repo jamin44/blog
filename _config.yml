@@ -58,7 +58,7 @@ exclude:
 safe: false
 # This is the URI format.
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink: /blog/:year/:month/:day/:title
+permalink: /blog/:title
 
 paginate: 7
 paginate_path: "/blog/page/:num/"
@@ -94,7 +94,7 @@ addons:
   comments:
     provider: disqus
     disqus:
-      short_name: Zeffon
+      short_name: zeffons-blog
 
   # Settings for analytics helper
   # Set 'provider' to the analytics provider you want to use.

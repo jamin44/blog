@@ -60,7 +60,7 @@ summary: Git 是一个开源的分布式版本控制系统，可以有效、高�
     $ git push origin v1.0
     Total 0 (delta 0), reused 0 (delta 0)
     To github.com:michaelliao/learngit.git
-    * [new tag]         v1.0 -> v1.0
+    [new tag]         v1.0 -> v1.0
     ```
 - 一次性推送全部尚未推送到远程的本地标签 `git push origin --tags`
 

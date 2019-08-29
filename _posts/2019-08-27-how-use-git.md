@@ -2,7 +2,7 @@
 layout: post
 title: Git的使用
 categories: [Git]
-tags: [git]
+tags: [Git]
 summary: Git 是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理
 ---
 

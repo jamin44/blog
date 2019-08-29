@@ -2,7 +2,7 @@
 layout: post
 title: Java DataStructure
 categories: [DataStructure]
-tags: [Array]
+tags: [DataStructure]
 summary: 
 ---
 

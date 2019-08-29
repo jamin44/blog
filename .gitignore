@@ -8,4 +8,5 @@ Gemfile.lock
 .sass-cache/*
 
 !.gitkeep
+.sass-cache
 

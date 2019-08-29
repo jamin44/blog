@@ -16,19 +16,18 @@ title: About
 
 #### This blog is powered by
 > Blog-aware, static site generator by [Jekyll][1] and [Bootstrap][2].  
-> Powered by [Github Pages][3].
+> Powered by [Github Pages][3]. 
+> Source code is at <https://github.com/ZeffonWu/ZeffonWu.github.io>  
 
 #### License
 > Code licensed under the [Apache License v2.0][4].   
-> Documentation licensed under [CC BY 3.0][5].  
-> Icons from [Glyphicons Free][6], licensed under [CC BY 3.0][5]. 
+> Documentation licensed under [CC BY-NC-SA 4.0][5].  
 
-#### 谢言
-> 该博客模板来自[zhanming](https://qizhanming.com)的博客,十分感谢！
+#### Thanks
+> The blog template comes from[zhanming](https://qizhanming.com), thank you very much!
 
-[1]: https://github.com/mojombo/jekyll
-[2]: http://twitter.github.com/bootstrap/
-[3]: http://pages.github.com
-[4]: http://www.apache.org/licenses/LICENSE-2.0
-[5]: http://creativecommons.org/licenses/by/3.0/
-[6]: http://glyphicons.com/
+[1]: https://github.com/jekyll/jekyll  
+[2]: https://github.com/twbs/bootstrap  
+[3]: http://pages.github.com  
+[4]: http://www.apache.org/licenses/LICENSE-2.0  
+[5]: http://creativecommons.org/licenses/by-nc-sa/4.0/  

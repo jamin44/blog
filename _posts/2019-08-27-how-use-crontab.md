@@ -8,12 +8,12 @@ summary: Linux crontab命令Linux 命令大全Linux crontab是用来定期执行
 
 ### 安装
 ```sh
-yum install -y cronie crontabs
+$ yum install -y cronie crontabs
 ```
 
 ### 检查crond服务是否安装及启动
 ```sh
-yum list crontabs && which crontab && crontab -l
+$ yum list crontabs && which crontab && crontab -l
 ```
 
 ### crontab架构
@@ -27,7 +27,7 @@ yum list crontabs && which crontab && crontab -l
 ### 添加crontab任务
 
 ```sh
-crontab -e
+$ crontab -e
 ```
 
 具体是编辑的那个文件呢？
@@ -37,13 +37,13 @@ crontab -e
 ### crontab配置文件
 
 ```sh
-vim /etc/crontab
+$ vim /etc/crontab
 ```
 
 ### crontab日志
 
 ```sh
-tail -n 5 /var/log/cron // 查看最近五次日志
+$ tail -n 5 /var/log/cron // 查看最近五次日志
 ```
 
 ### 清理系统日志

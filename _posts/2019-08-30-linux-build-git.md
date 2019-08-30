@@ -6,7 +6,7 @@ tags: [Linux, Git]
 summary: 在Linux系统中搭建Git服务
 ---
 
-> **`注`** yum 源仓库里的 Git 版本更新不及时，最新版本的 Git 是 1.8.3.1，但是官方最新版本已经到了 2+。想要安装最新版本的的 Git，只能下载源码进行安装。
+> **`注`**  yum源仓库里的Git版本更新不及时，最新版本的Git是 1.8.3.1，但是官方最新版本已经到了`2+`。想要安装最新版本的的 Git，只能下载源码进行安装。
 
 ### 安装编译
 
@@ -43,7 +43,7 @@ export PATH="/usr/local/git/bin:$PATH"
 source /etc/profile   # 使配置立即生效
 git --version  # 查看版本号
 ```
-1. 将git设置为默认路径--不然后面克隆时会报错
+1. 将git设置为默认路径(不然后面克隆时会报错)
 ```sh
 ln -s /usr/local/git/bin/git-upload-pack /usr/bin/git-upload-pack 
 ln -s /usr/local/git/bin/git-receive-pack /usr/bin/git-receive-pack 
@@ -54,7 +54,7 @@ ln -s /usr/local/git/bin/git-receive-pack /usr/bin/git-receive-pack
 ```sh
 git config --global user.name '用户名'
 git config --global user.email '邮箱地址'
-git congit --list
+git congit --list # 查看配置项
 ```
 1. 查看是否存在ssh keys
 ```sh
@@ -65,7 +65,7 @@ cd ~/.ssh
 ```sh
 ssh-keygen -t rsa -C "邮箱"
 ```
-> **`注意`** 如果三次直接回车(无密码push和pull)，也可以第二次和第三次输入密码（push和pull操作需要该密码验证）
+> **`注意`** 如果三次直接回车(`无密码`push和pull)，也可以第二次和第三次输入密码（push和pull操作需要`该密码`验证）
 1. 测试一下连接
 ```sh
 ssh -T -v git@github.com

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Java DataStructure
+title: Java Linear structure
 categories: [DataStructure]
 tags: [DataStructure]
-summary: 
+summary: 线性结构是一个有序数据元素的集合。线性结构--数组、栈、队列、链表介绍
 ---
 
 ### Array 数组
@@ -52,4 +52,39 @@ summary:
 1. 链表在添加和删除中，对数据操作的顺序很重要。在中间添加时，先将该元素的前一个节点找出来。
 1. 优点: 真正的动态数据，不需要像Array、Stack、Queue处理固定容量的问题
 1. 缺点: 不适合用于索引有语意的情况，因为它丧失了随机访问数据的能力
+
+
+### Recursion 递归
+> `递归` : 本质上，将原来的问题，转化为更小的同一问题
+
+- 递归`基本原则`: 所有递归问题基本上都可以分为以下`两部分`
+1. 求解`最基本`问题（这个最基本问题是不能自动求解的，需要编写逻辑求解的）
+1. 把原问题转化成`更小`的问题（核心部分）
+
+- 举例 : 数组求和
+```java
+Sum(arr[0...n-1]) = arr[0] + Sum(arr[1...n-1])   <-  更小的同一问题(少了一个元素)
+Sum(arr[1...n-1]) = arr[1] + Sum(arr[2...n-1])   <-  更小的同一问题(少了一个元素)
+                            . . . . . .
+Sum(arr[n-1...n-1]) = arr[n-1] + Sum([])   <-  最基本的问题
+```
+- 代码
+```java
+    public static int sum(int[] arr){
+        return sum(arr, 0);
+    }
+
+    // 计算arr[l...n)这个区间内所有数字的和
+    private static int sum(int[] arr, int l){
+        if(l == arr.length)
+            return 0;                        <-  最基本的问题
+        return arr[l] + sum(arr, l + 1);     <-  更小的同一问题
+    }
+
+    public static void main(String[] args) {
+
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8};
+        System.out.println(sum(nums));
+    }
+```
 

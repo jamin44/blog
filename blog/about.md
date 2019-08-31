@@ -10,6 +10,7 @@ title: About
 #### 关于作者 / About me
 > Zeffon  
 > 万千码农之一
+> 处世明故，循名责实
 
 #### 联系作者 / Contact me
 > Mail: ZeffonWu@gmail.com

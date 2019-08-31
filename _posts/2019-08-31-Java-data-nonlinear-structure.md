@@ -2,7 +2,7 @@
 layout: post
 title: Java Nonlinear structure
 categories: [DataStructure]
-tags: [DataStructure]
+tags: [java, datastructure]
 summary: 非线性结构中各个数据元素不再保持在一个线性序列中，每个数据元素可能与零个或者多个其他数据元素发生联系。
 ---
 

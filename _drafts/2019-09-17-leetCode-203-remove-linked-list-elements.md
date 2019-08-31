@@ -2,7 +2,7 @@
 layout: post
 title: 203.移除链表元素
 categories: [LeetCode]
-tags: [LeetCode]
+tags: [leetCode]
 summary: 删除链表中等于给定值 val 的所有结点。
 ---
 

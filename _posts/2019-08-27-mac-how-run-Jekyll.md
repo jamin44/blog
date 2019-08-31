@@ -2,7 +2,7 @@
 layout: post
 title: Jekyll环境的搭建
 categories: [blog]
-tags: [Jekyll]
+tags: [jekyll]
 summary: Jekyll 是一个简单的，博客感知，静态站点生成器，与github的pages很相配。
 ---
 

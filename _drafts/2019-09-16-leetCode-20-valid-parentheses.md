@@ -2,7 +2,7 @@
 layout: post
 title: 20.有效的括号
 categories: [LeetCode]
-tags: [LeetCode]
+tags: [leetCode]
 summary: 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
 ---
 

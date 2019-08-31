@@ -2,7 +2,7 @@
 layout: post
 title: Linux搭建Git环境
 categories: [Git]
-tags: [Linux, Git]
+tags: [centos, git]
 summary: 在Linux系统中搭建Git服务
 ---
 

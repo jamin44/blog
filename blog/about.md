@@ -9,16 +9,15 @@ title: About
 
 #### 关于作者 / About me
 > Zeffon  
-> 万千码农之一
-> 处世明故，循名责实
+> 处世明故，循名责实。  
 
 #### 联系作者 / Contact me
 > Mail: ZeffonWu@gmail.com
 
 #### This blog is powered by
 > Blog-aware, static site generator by [Jekyll][1] and [Bootstrap][2].  
-> Powered by [Github Pages][3]. 
-> Source code is at <https://github.com/ZeffonWu/ZeffonWu.github.io>  
+> Powered by [Github Pages][3].  
+> Source code is at [ZeffonWu](https://github.com/ZeffonWu/ZeffonWu.github.io)
 
 #### License
 > Code licensed under the [Apache License v2.0][4].   

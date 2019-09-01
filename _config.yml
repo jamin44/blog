@@ -58,9 +58,9 @@ exclude:
 safe: false
 # This is the URI format.
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink: /blog/:title
+permalink: /blog/:year/:month/:title
 
-paginate: 7
+paginate: 10
 paginate_path: "/blog/page/:num/"
 
 # Assets

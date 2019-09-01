@@ -2,7 +2,7 @@
 layout: post
 title: Java Linear structure
 categories: [DataStructure]
-tags: [java, datastructure]
+tags: [java]
 summary: 线性结构是一个有序数据元素的集合。线性结构--数组、栈、队列、链表介绍
 ---
 

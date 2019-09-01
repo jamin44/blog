@@ -2,7 +2,7 @@
 layout: post
 title: flask项目在centos7部署流程
 categories: [Python]
-tags: [flask, centos, crontab, python, nginx, uwsgi]
+tags: [flask, centos, crontab, python, nginx]
 summary: Flask 是一个web框架，而非web server，直接用Flask拉起的web服务仅限于开发环境使用，生产环境不够稳定，也无法承受大量请求的并发。基于Flask开发API项目是，部署时用uwsgi和Nginx，是一个很好的选择。
 ---
 

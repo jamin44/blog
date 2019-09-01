@@ -81,7 +81,7 @@ IMPORTANT NOTES:
 ```
 README  cert.pem  chain.pem  fullchain.pem  privkey.pem
 ```
-而我们需要用到的证书是 `fullchain.pem` 和 `privkey.pem`
+而Nginx配置证书我们需要用到的证书是 `fullchain.pem` 和 `privkey.pem`。
 
 ### Nginx证书配置
 1. 配置conf文件（`注意`更换自己的证书）
@@ -123,9 +123,11 @@ Let's Encrypt提供的证书只有90天的有效期，所以我们需要写一�
 1. 使用 `certbot renew` 自动更新证书
 ```sh
 $ certbot-auto renew --dry-run # 需要进入/usr/local/certbot目录
+或者可以使用强制更新
+$ certbot-auto --force-renew
 ```
 >但是却报错了。原因: 重新更新证书需要启动443端口，而这个端口被nginx占用着  
->解决方法: 其实很简单，就是在执行`certbot renew --dry-run`命令前，把Nginx停止 `systemctl stop nginx`, 执行成功后就把Nginx启动 `systemctl start nginx`
+>解决方法: 其实很简单，就是在执行`certbot renew --dry-run`命令前，把Nginx停止 `systemctl stop nginx`, 执行成功后就把Nginx启动 `systemctl start nginx`。所以需要用到 `--pre-hook`（这个参数表示执行更新操作之前要做的事情）,`--post-hook`(这个参数表示执行更新操作完成后要做的事情)
 
 1. 定时设置(每1个月，凌晨10分执行)
 新建 certbot-auto-renew-crontab.sh 文件
@@ -138,4 +140,3 @@ $ vi certbot-auto-renew-crontab.sh
 ```sh
 crontab certbot-auto-renew-crontab.sh
 ```
-

@@ -34,5 +34,5 @@ right child(i) = 2 * i + 2
 ```
 
 ### 参考文献
-维基百科-[优先队列](https://zh.wikipedia.org/wiki/%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97)
-维基百科-[二叉树](https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%8F%89%E5%A0%86)
+- 维基百科-[优先队列](https://zh.wikipedia.org/wiki/%E5%84%AA%E5%85%88%E4%BD%87%E5%88%97)
+- 维基百科-[二叉树](https://zh.wikipedia.org/wiki/%E4%BA%8C%E5%8F%89%E5%A0%86)

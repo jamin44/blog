@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="{{ site.author.name }}" />
-  {% if page.title %}<meta name="title" content="{{ page.title }}" />{% endif %}
-  {% if page.tags %}<meta name="keywords" content="{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}, {% endif %}{% endfor %}">{% endif %}
+  {% if page.title %}
+  <meta name="title" content="{{ page.title }}" />{% endif %}
+  {% if page.tags %}
+  <meta name="keywords"
+    content="{% for tag in page.tags %}{{ tag }}{% if forloop.last == false %}, {% endif %}{% endfor %}">{% endif %}
   <title>{{ page.title }} - Zeffon's blog</title>
   <link rel="shortcut icon" href="/favicon.ico" type="image/ico">
   <link rel="stylesheet" href="/assets/bootstrap/4.3/css/bootstrap.min.css" type="text/css" media="screen" />
@@ -16,37 +20,55 @@
 </head>
 <body>
 
-<div class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container">
-    <a class="navbar-brand" href="/">{{ site.title}}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item{% if page.navigation %} {% else %} active{% endif%}"><a class="nav-link" href="/">首页</a></li>
-		<li class="nav-item{% if page.navigation == 'Archives' %} active{% endif%}"><a class="nav-link" href="/blog/archives">归档</a></li>
-		<li class="nav-item{% if page.navigation == 'Tags' %} active{% endif%}"><a class="nav-link" href="/blog/tags">标签</a></li>
-		<li class="nav-item{% if page.navigation == 'About' %} active{% endif%}"><a class="nav-link" href="/blog/about">关于</a></li>
-      </ul>
+      <a class="navbar-brand" href="/">{{ site.title}}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- HTML elements for search -->
+      <div id="search-container" class="dropdown navbar-form navbar-right ">
+          <!-- <input type="text" id="search-input" placeholder="search..."> -->
+          <!-- <ul id="results-container"></ul> -->
+          <input id="search-input" name="word" type="text"  aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="form-control typeahead"   placeholder="search...">
+          <ul class="dropdown-menu" aria-labelledby="dLabel" id="results-container"></ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item{% if page.navigation %} {% else %} active{% endif%}"><a class="nav-link" href="/">首页</a>
+          </li>
+          <li class="nav-item{% if page.navigation == 'Archives' %} active{% endif%}"><a class="nav-link"
+              href="/blog/archives">归档</a></li>
+          <li class="nav-item{% if page.navigation == 'Categories' %} active{% endif%}"><a class="nav-link"
+                href="/blog/categories">分类</a></li>
+          <li class="nav-item{% if page.navigation == 'Tags' %} active{% endif%}"><a class="nav-link"
+              href="/blog/tags">标签</a></li>
+          <li class="nav-item{% if page.navigation == 'About' %} active{% endif%}"><a class="nav-link"
+              href="/blog/about">关于</a></li>
+        </ul>
       </div>
     </div>
   </div>
-<div class="container">
-	{{content}}
-</div>
-<div class="footer">
+  <div class="container">
+    {{content}}
+  </div>
+  <div class="footer">
     <p>
       <span>&copy; 2019 - {{ site.time | date: "%Y" }} {{ site.domain.name }}</span>
     </p>
-</div>
-<script type="text/javascript" charset="utf-8" src="/assets/bootstrap/4.3/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/assets/app/js/app.js"> </script>
-{% comment %}
-{% include comments_count %}
-{% endcomment %}
-{% comment %}
-{% include analytics %}
-{% endcomment %}
+  </div>
+  <script type="text/javascript" charset="utf-8" src="/assets/bootstrap/4.3/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/assets/app/js/app.js"> </script>
+  <!-- script pointing to jekyll-search.js -->
+  <script type="text/javascript" charset="utf-8" src="/assets/app/js/simple-jekyll-search.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/assets/app/js/search-config.js"></script>
+  <link rel="stylesheet" href="/assets/app/css/search.css" type="text/css" media="screen" />
+  {% comment %}
+  {% include comments_count %}
+  {% endcomment %}
+  {% comment %}
+  {% include analytics %}
+  {% endcomment %}
 </body>
 </html>

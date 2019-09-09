@@ -9,4 +9,4 @@ Gemfile.lock
 
 !.gitkeep
 .sass-cache
-
+node_modules

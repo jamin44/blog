@@ -132,11 +132,11 @@ $ certbot-auto --force-renew
 1. 定时设置(每1个月，凌晨10分执行)
 新建 certbot-auto-renew-crontab.sh 文件
 ```sh
-mkdir crontab # 与usr同级下新建crontab目录
+$ mkdir crontab # 与usr同级下新建crontab目录
 $ vi certbot-auto-renew-crontab.sh
 10 0 * 1 * /usr/local/certbot/certbot-auto --force-renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx" # --force-renew 强制更新
 ```
 1. 用 `crontab` 来启动这个定时任务
 ```sh
-crontab certbot-auto-renew-crontab.sh
+$ crontab certbot-auto-renew-crontab.sh
 ```

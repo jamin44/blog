@@ -7,7 +7,7 @@ title: Archive
 <h3>归档</h3>
 <div id="archives">
     {% for post in site.posts %}
-    	{% assign currentDate = post.date | date: "%Y" %}
+    	{% assign currentDate = post.date | date: "%Y-%m" %}
     	{% if currentDate != myDate %}
            {% unless forloop.first %}</ul>{% endunless %}
            <h3>{{ currentDate }}</h3>

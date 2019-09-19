@@ -39,7 +39,35 @@ summary: 给定两个数组，编写一个函数来计算它们的交集。
 
 ### 解题代码
 ```java
+// 时间复杂度: O(nlogn)
+// 空间复杂度: O(n)
+public class Solution {
+    
+    public int[] intersect(int[] nums1, int[] nums2) {
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for(int num: nums1)
+            if(!map.containsKey(num))
+                map.put(num, 1);
+            else
+                map.put(num, map.get(num) + 1);
 
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int num : nums2)
+            if (map.containsKey(num) && map.get(num) > 0){
+                list.add(num);
+                map.put(num, map.get(num) - 1);
+                if (map.get(num) == 0)
+                    map.remove(num);
+            }
+
+        int[] res = new int[list.size()];
+        int index = 0;
+        for(Integer num : list)
+            res[index++] = num;
+
+        return res;
+    }
+}
 ```
 
 ### 题目来源

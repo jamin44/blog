@@ -2,7 +2,7 @@
 layout: post
 title: 25.K个一组翻转链表
 categories: [LeetCode]
-tags: [leetCode, listNode]
+tags: [leetCode, linkedList]
 summary: 给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 349.两个数组的交集
 categories: [LeetCode]
-tags: [leetCode]
+tags: [leetCode, lookupTable]
 summary: 给定两个数组，编写一个函数来计算它们的交集。
 ---
 

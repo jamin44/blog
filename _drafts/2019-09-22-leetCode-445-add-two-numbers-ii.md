@@ -2,7 +2,7 @@
 layout: post
 title: 445.两数相加 II
 categories: [LeetCode]
-tags: [leetCode, listNode]
+tags: [leetCode, linkedList]
 summary: 给定两个非空链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储单个数字。将这两数相加会返回一个新的链表。
 ---
 

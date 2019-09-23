@@ -2,7 +2,7 @@
 layout: post
 title: 143.重排链表
 categories: [LeetCode]
-tags: [leetCode, listNode]
+tags: [leetCode, linkedList]
 summary: 重新排列链表。
 ---
 

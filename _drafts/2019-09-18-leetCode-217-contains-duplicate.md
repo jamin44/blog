@@ -2,7 +2,7 @@
 layout: post
 title: 217.存在重复元素
 categories: [LeetCode]
-tags: [leetCode]
+tags: [leetCode, lookupTable]
 summary: 给定一个整数数组，判断是否存在重复元素。
 ---
 

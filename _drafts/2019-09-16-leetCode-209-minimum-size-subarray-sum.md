@@ -2,7 +2,7 @@
 layout: post
 title: 209.长度最小的子数组
 categories: [LeetCode]
-tags: [leetCode]
+tags: [leetCode, array]
 summary: 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。
 ---
 

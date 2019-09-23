@@ -2,7 +2,7 @@
 layout: post
 title: 328.奇偶链表
 categories: [LeetCode]
-tags: [leetCode, listNode]
+tags: [leetCode, linkedList]
 summary: 给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。
 ---
 

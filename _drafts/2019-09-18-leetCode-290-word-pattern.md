@@ -2,7 +2,7 @@
 layout: post
 title: 290.单词规律
 categories: [LeetCode]
-tags: [leetCode, lookupTable]
+tags: [leetCode, lookup Table]
 summary: 给定一种规律 pattern 和一个字符串 str ，判断 str 是否遵循相同的规律。
 ---
 

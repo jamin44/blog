@@ -2,7 +2,7 @@
 layout: post
 title: 447.回旋镖的数量
 categories: [LeetCode]
-tags: [leetCode, lookupTable]
+tags: [leetCode, lookup Table]
 summary: 给定平面上 n 对不同的点，“回旋镖” 是由点表示的元组 (i, j, k) ，其中 i 和 j 之间的距离和 i 和 k 之间的距离相等（需要考虑元组的顺序）。
 ---
 

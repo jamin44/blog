@@ -2,7 +2,7 @@
 layout: post
 title: 234.回文链表
 categories: [LeetCode]
-tags: [leetCode, linkedList]
+tags: [leetCode, linked List]
 summary: 请判断一个链表是否为回文链表。
 ---
 

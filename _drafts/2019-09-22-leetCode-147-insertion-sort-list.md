@@ -2,7 +2,7 @@
 layout: post
 title: 147.对链表进行插入排序
 categories: [LeetCode]
-tags: [leetCode, linkedList]
+tags: [leetCode, linked List]
 summary: 对链表进行插入排序。
 ---
 

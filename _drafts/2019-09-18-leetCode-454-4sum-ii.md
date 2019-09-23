@@ -2,7 +2,7 @@
 layout: post
 title: 454.四数相加 II
 categories: [LeetCode]
-tags: [leetCode, lookupTable]
+tags: [leetCode, lookup Table]
 summary: 给定四个包含整数的数组列表 A , B , C , D ,计算有多少个元组 (i, j, k, l) ，使得 A[i] + B[j] + C[k] + D[l] = 0
 ---
 

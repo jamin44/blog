@@ -2,7 +2,7 @@
 layout: post
 title: 144.二叉树前序遍历
 categories: [LeetCode]
-tags: [stack, Binary Search Tree]
+tags: [stack, binary Search Tree]
 summary: 给定一个二叉树，返回其节点值的前序遍历。
 ---
 

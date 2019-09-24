@@ -2,7 +2,7 @@
 layout: post
 title: 347.前 K 个高频元素
 categories: [LeetCode]
-tags: [leetCode]
+tags: [queue]
 summary: 给定一个非空的整数数组，返回其中出现频率前 k 高的元素。
 ---
 
@@ -66,8 +66,8 @@ class Solution {
         for(int key : map.keySet()) {
             if (pq.size() < k)
                 pq.add(new Freq(key, map.get(key)));
-            else if(map.get(key) > pq.peek().freq){
-                pq.remove();
+            else if(map.get(key) > pq.peek().freq){ // 优先队列已满
+                pq.remove(); // 取出频次最小的
                 pq.add(new Freq(key, map.get(key)));
             }
         }

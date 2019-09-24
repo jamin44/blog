@@ -2,7 +2,7 @@
 layout: post
 title: 71.简化路径
 categories: [LeetCode]
-tags: [leetCode, stack]
+tags: [stack]
 summary: 给定文件的绝对路径（Unix风格），请简化它。或者换句话说，将其转换为规范路径。
 ---
 

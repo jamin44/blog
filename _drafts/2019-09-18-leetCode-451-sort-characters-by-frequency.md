@@ -2,7 +2,7 @@
 layout: post
 title: 451.根据字符出现频率排序
 categories: [LeetCode]
-tags: [leetCode, lookup Table]
+tags: [lookup Table]
 summary: 给定一个字符串，请将字符串里的字符按照出现的频率降序排列。
 ---
 

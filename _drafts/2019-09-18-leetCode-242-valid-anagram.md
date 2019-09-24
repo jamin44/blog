@@ -2,7 +2,7 @@
 layout: post
 title: 242.有效的字母异位词
 categories: [LeetCode]
-tags: [leetCode, lookup Table]
+tags: [lookup Table]
 summary: 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
 ---
 

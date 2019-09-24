@@ -2,7 +2,7 @@
 layout: post
 title: 438.找到字符串中所有字母异位词
 categories: [LeetCode]
-tags: [leetCode, array]
+tags: [array]
 summary: 给定一个字符串 s 和一个非空字符串 p，找到 s 中所有是 p 的字母异位词的子串，返回这些子串的起始索引。
 ---
 

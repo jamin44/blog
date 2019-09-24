@@ -2,7 +2,7 @@
 layout: post
 title: 167.两数之和 II - 输入有序数组
 categories: [LeetCode]
-tags: [leetCode, array]
+tags: [array]
 summary: 给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。
 ---
 

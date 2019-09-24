@@ -2,7 +2,7 @@
 layout: post
 title: 150.逆波兰表达式求值
 categories: [LeetCode]
-tags: [leetCode, stack]
+tags: [stack]
 summary: 根据逆波兰表示法，求表达式的值。
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 303.区域和检索 - 数组不可变
 categories: [LeetCode]
-tags: [leetCode]
+tags: [array]
 summary: 给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。
 ---
 

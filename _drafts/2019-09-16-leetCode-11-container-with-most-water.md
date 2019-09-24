@@ -2,7 +2,7 @@
 layout: post
 title: 11.盛最多水的容器
 categories: [LeetCode]
-tags: [leetCode, array]
+tags: [array]
 summary: 给定 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。
 ---
 

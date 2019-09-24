@@ -2,7 +2,7 @@
 layout: post
 title: 148.排序链表
 categories: [LeetCode]
-tags: [leetCode, linked List]
+tags: [linked List]
 summary: 在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。
 ---
 

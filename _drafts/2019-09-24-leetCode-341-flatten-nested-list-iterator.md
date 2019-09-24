@@ -2,7 +2,7 @@
 layout: post
 title: 341.扁平化嵌套列表迭代器
 categories: [LeetCode]
-tags: [leetCode, stack]
+tags: [stack]
 summary: 给定一个嵌套的整型列表。设计一个迭代器，使其能够遍历这个整型列表中的所有整数。 
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 144.二叉树后序遍历
 categories: [LeetCode]
-tags: [leetCode, stack, Binary Search Tree]
+tags: [stack, Binary Search Tree]
 summary: 给定一个二叉树，返回其节点值的后序遍历。
 ---
 

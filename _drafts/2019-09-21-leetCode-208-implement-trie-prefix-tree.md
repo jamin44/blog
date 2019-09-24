@@ -2,7 +2,7 @@
 layout: post
 title: 208.实现 Trie (前缀树)
 categories: [LeetCode]
-tags: [leetCode]
+tags: []
 summary: 实现一个 Trie (前缀树)，包含 insert, search, 和 startsWith 这三个操作。
 ---
 

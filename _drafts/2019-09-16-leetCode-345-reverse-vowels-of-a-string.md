@@ -2,7 +2,7 @@
 layout: post
 title: 345.反转字符串中的元音字母
 categories: [LeetCode]
-tags: [leetCode, array]
+tags: [array]
 summary: 编写一个函数，以字符串作为输入，反转该字符串中的元音字母。
 ---
 

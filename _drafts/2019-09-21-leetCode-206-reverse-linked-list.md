@@ -2,7 +2,7 @@
 layout: post
 title: 206.反转链表
 categories: [LeetCode]
-tags: [leetCode]
+tags: []
 summary: 反转一个单链表。
 ---
 

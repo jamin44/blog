@@ -2,7 +2,7 @@
 layout: post
 title: 125.验证回文串
 categories: [LeetCode]
-tags: [leetCode, array]
+tags: [array]
 summary: 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
 ---
 

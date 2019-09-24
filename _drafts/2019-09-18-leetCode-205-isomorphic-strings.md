@@ -2,7 +2,7 @@
 layout: post
 title: 205.同构字符串
 categories: [LeetCode]
-tags: [leetCode, lookup Table]
+tags: [lookup Table]
 summary: 给定两个字符串 s 和 t，判断它们是否是同构的。
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 24.两两交换链表中的节点
 categories: [LeetCode]
-tags: [leetCode, linked List]
+tags: [linked List]
 summary: 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
 ---
 

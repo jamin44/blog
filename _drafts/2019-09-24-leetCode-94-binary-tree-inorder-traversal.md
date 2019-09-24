@@ -2,7 +2,7 @@
 layout: post
 title: 94. 二叉树的中序遍历
 categories: [LeetCode]
-tags: [leetCode, stack, Binary Search Tree]
+tags: [stack, Binary Search Tree]
 summary: 给定一个二叉树，返回它的中序遍历。
 ---
 

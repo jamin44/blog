@@ -2,7 +2,7 @@
 layout: post
 title: 202.快乐数
 categories: [LeetCode]
-tags: [leetCode, lookup Table]
+tags: [lookup Table]
 summary: 编写一个算法来判断一个数是不是“快乐数”。
 ---
 

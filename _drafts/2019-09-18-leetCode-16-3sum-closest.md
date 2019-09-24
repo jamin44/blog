@@ -2,7 +2,7 @@
 layout: post
 title: 16.最接近的三数之和
 categories: [LeetCode]
-tags: [leetCode, lookup Table]
+tags: [lookup Table]
 summary: 给定一个包括 n 个整数的数组 nums 和 一个目标值 target。
 ---
 

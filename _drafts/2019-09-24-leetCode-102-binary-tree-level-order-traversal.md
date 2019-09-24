@@ -2,7 +2,7 @@
 layout: post
 title: 102.二叉树的层次遍历
 categories: [LeetCode]
-tags: [leetCode, queue]
+tags: [queue]
 summary: 给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
 ---
 

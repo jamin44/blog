@@ -2,7 +2,7 @@
 layout: post
 title: 677.键值映射
 categories: [LeetCode]
-tags: [leetCode]
+tags: [linked List]
 summary: 实现一个 MapSum 类里的两个方法，insert 和 sum。
 ---
 

@@ -2,7 +2,7 @@
 layout: post
 title: 83.删除排序链表中的重复元素
 categories: [LeetCode]
-tags: [leetCode, linked List]
+tags: [linked List]
 summary: 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
 ---
 

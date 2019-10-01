@@ -26,8 +26,8 @@ summary: 在未排序的数组中找到第 k 个最大的元素。请注意，�
 ```
 
 ### 解题思路
-- 快速排序
-
+- 单路快速排序  
+1. 根据partition获得的数为判断，若k-1相等则刚好是想找到的数；若小于k，则在findKthLargest(nums, l, p-1, k)中继续查找；大于k，则在findKthLargest(nums, p+1 , r, k)中继续查找。
 
 ### 解题代码
 ```java
@@ -36,35 +36,34 @@ class Solution {
         if(nums == null || nums.length < 0 || nums.length < k){
             return -1;
         }
-        int l = 0, r = nums.length - 1;
+        int  n = nums.length;
+        return findKthLargest(nums, 0, n-1, k-1);
+    }
+    
+    private int findKthLargest(int[] nums, int l, int r, int k) {
+        if(l == r)
+            return nums[l];
         int p = partition(nums, l, r);
-        while(p != k - 1){
-            if(p > k - 1){
-                r = p - 1;
-            }
-            else{
-                l = p + 1;
-            }
-            p = partition(nums, l, r);
-        }
-        return nums[p];
+        
+        if(p == k)
+            return nums[p];
+        else if(k < p)
+            return findKthLargest(nums, l, p-1, k);
+        else 
+            return findKthLargest(nums, p+1 , r, k);
+
     }
     
     private int partition(int[] nums, int l, int r){
-        int flag = nums[l];
-        int i = l, j = r;
-        while(i < j){
-            while(nums[j] <= flag && i < j){
-                j--;
-            }
-            while(nums[i] >= flag && i < j){
-                i++;
-            }
-            if(i < j)
-                swap(nums, i, j);
-        }
-        swap(nums, l, i);
-        return i;
+        
+        swap(nums , l, (int)(Math.random()*(r-l+1)) + l);
+        
+        int lt = l + 1; //[l+1...lt) > p ; [lt..i) < p
+        for(int i = l + 1; i <= r; i++)
+            if(nums[i] > nums[l])
+                swap(nums, i, lt++);
+        swap(nums, l, lt - 1);
+        return lt - 1;
     }
     
     private void swap(int[] nums, int i, int j){

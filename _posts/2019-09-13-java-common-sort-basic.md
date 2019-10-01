@@ -237,6 +237,120 @@ summary: 六种常用的排序-冒泡排序、选择排序、插入排序、归�
     }
 ```
 
+#### 双路排序
+```java
+public class QuickSort2Ways {
+    // 双路快速排序的partition
+    // 返回p, 使得arr[l...p-1] < arr[p] ; arr[p+1...r] > arr[p]
+    private static int partition(Comparable[] arr, int l, int r){
+
+        // 随机在arr[l...r]的范围中, 选择一个数值作为标定点pivot
+        swap( arr, l , (int)(Math.random()*(r-l+1))+l );
+        Comparable v = arr[l];
+
+        // arr[l+1...i) <= v; arr(j...r] >= v
+        int i = l+1, j = r;
+        while( true ){
+            // 注意这里的边界, arr[i].compareTo(v) < 0, 不能是arr[i].compareTo(v) <= 0
+            while( i <= r && arr[i].compareTo(v) < 0 )
+                i ++;
+
+            // 注意这里的边界, arr[j].compareTo(v) > 0, 不能是arr[j].compareTo(v) >= 0
+            while( j >= l+1 && arr[j].compareTo(v) > 0 )
+                j --;
+
+            if( i > j )
+                break;
+
+            swap( arr, i, j );
+            i ++;
+            j --;
+        }
+
+        swap(arr, l, j);
+        return j;
+    }
+
+    // 递归使用快速排序,对arr[l...r]的范围进行排序
+    private static void sort(Comparable[] arr, int l, int r){
+
+        // 对于小规模数组, 使用插入排序
+        if( r - l <= 15 ){
+            InsertionSort.sort(arr, l, r);
+            return;
+        }
+        int p = partition(arr, l, r);
+        sort(arr, l, p-1 );
+        sort(arr, p+1, r);
+    }
+
+    public static void sort(Comparable[] arr){
+
+        int n = arr.length;
+        sort(arr, 0, n-1);
+    }
+
+    private static void swap(Object[] arr, int i, int j) {
+        Object t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
+}
+```
+
+#### 三路排序
+```java
+public class QuickSort3Ways {
+    // 递归使用快速排序,对arr[l...r]的范围进行排序
+    private static void sort(Comparable[] arr, int l, int r){
+
+        // 对于小规模数组, 使用插入排序
+        if( r - l <= 15 ){
+            InsertionSort.sort(arr, l, r);
+            return;
+        }
+        // 随机在arr[l...r]的范围中, 选择一个数值作为标定点pivot
+        swap( arr, l, (int)(Math.random()*(r-l+1)) + l );
+        Comparable v = arr[l];
+
+        int lt = l;     // arr[l+1...lt] < v
+        int gt = r + 1; // arr[gt...r] > v
+        int i = l+1;    // arr[lt+1...i) == v
+        while( i < gt ){
+            if( arr[i].compareTo(v) < 0 ){
+                swap( arr, i, lt+1);
+                i ++;
+                lt ++;
+            }
+            else if( arr[i].compareTo(v) > 0 ){
+                swap( arr, i, gt-1);
+                gt --;
+            }
+            else{ // arr[i] == v
+                i ++;
+            }
+        }
+
+        swap( arr, l, lt );
+
+        sort(arr, l, lt-1);
+        sort(arr, gt, r);
+    }
+
+    public static void sort(Comparable[] arr){
+
+        int n = arr.length;
+        sort(arr, 0, n-1);
+    }
+
+    private static void swap(Object[] arr, int i, int j) {
+        Object t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+    }
+}
+```
+
 ### Heapsort 堆排序
 - 重复从最大堆积取出数值`最大`的结点(把根结点和最后一个结点交换，把交换后的最后一个结点移出堆)，并让残余的堆积维持`最大堆积`性质。
 - 通常堆是通过一维`数组`来实现的。在数组起始位置`为1`的情形中：

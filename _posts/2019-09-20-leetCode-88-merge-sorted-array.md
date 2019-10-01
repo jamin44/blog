@@ -27,7 +27,7 @@ nums2 = [2,5,6],       n = 3
 ### 解题思路
 - `从后向前`数组遍历
 1. 设置指针i 和 j 分别指向 nums1 和 nums2 的有`数字尾部`，从`尾部值`开始比较遍历，同时设置指针 k 指向 nums1 的`最末尾`，每次遍历比较值大小之后，则进行`填充`。
-1. 当 `i<0` 时遍历结束，此时 nums2 中海油数据`未拷贝`完全，将其直接拷贝到 `nums1` 的前面，最后得到结果数组  
+1. 当 `i<0` 时遍历结束，此时 nums2 中还有数据`未拷贝`完全，将其直接拷贝到 `nums1` 的前面，最后得到结果数组  
 1. 时间复杂度：O(m+n)O(m+n)
 
 
@@ -35,16 +35,18 @@ nums2 = [2,5,6],       n = 3
 ```java
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = m-1, j = n-1, k = m+n-1;
-        while(i >= 0 && j >= 0){
-            if(nums1[i] > nums2[j]){
-                nums1[k] = nums2[i--];
-            }else{
-        	    nums1[k] = nums1[j--];
+        int i = m -1, j = n - 1, k = m + n -1;
+        while(i >= 0 && j >= 0) {
+            if(nums1[i] > nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
             }
             k--;
         }
-        while(j >= 0){
+        while(j >= 0) {
             nums1[k--] = nums2[j--];
         }
     }

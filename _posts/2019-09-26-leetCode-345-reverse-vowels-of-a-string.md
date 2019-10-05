@@ -27,7 +27,7 @@ summary: 编写一个函数，以字符串作为输入，反转该字符串中�
 
 
 ### 解题思路
-
+- 采用`双指针`思路
 
 ### 解题代码
 ```java
@@ -53,7 +53,7 @@ class Solution {
         }
         return new String(arr);
     }
-    
+
     private void swap(char[] ch, int i, int j) {
         char t = ch[i];
         ch[i] = ch[j];

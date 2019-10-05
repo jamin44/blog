@@ -20,13 +20,29 @@ summary: 给定 n 个非负整数 a1，a2，...，an，每个数代表坐标中�
 
 
 ### 解题思路
+- 采用`双指针`思路  
+1. 先取最小的两边指针为高，两者间的间距为宽
+1. 取每次面积最大的保存起来，最后返回。
 
 
 ### 解题代码
 ```java
 class Solution {
     public int maxArea(int[] height) {
-        
+        if(height.length <= 1) {
+            return -1;
+        }
+        int l = 0, r = height.length - 1;
+        int res = 0;
+        while(l < r) {
+            int h = Math.min(height[l], height[r]);
+            res = Math.max(res, h * (r - l));
+            if(height[l] < height[r])
+                l++;
+            else
+                r--;
+        }
+        return res;
     }
 }
 ```

@@ -24,14 +24,39 @@ summary: 给定一个字符串，验证它是否是回文串，只考虑字母�
 ```
 
 ### 解题思路
-
+- 采用`对撞指针`思路
 
 ### 解题代码
 ```java
 class Solution {
     public boolean isPalindrome(String s) {
-        
+        if (s.length() <= 1)
+            return true;
+        char[] chars = s.toLowerCase().toCharArray();
+        int l = 0, r = chars.length - 1;
+
+        while(l < r) {
+            while(l < r && !isletter(chars[l])) {
+                l++;
+            }
+            while(l < r && !isletter(chars[r])) {
+                r--;
+            }
+            if(chars[l] != chars[r]) {
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
     }
+	private boolean isletter(char c) {
+		 if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')) {
+             return true;
+         }else {
+        	return false; 
+         }
+	}
 }
 ```
 

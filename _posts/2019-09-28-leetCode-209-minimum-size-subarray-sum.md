@@ -42,7 +42,7 @@ class Solution {
             if(sum >= s)
                 res = Math.min(res, r - l + 1);
         }
-        if(res = nums.length + 1)
+        if(res == nums.length + 1)
             return 0;
         return res;
     }

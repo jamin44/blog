@@ -12,7 +12,7 @@ summary: SPU英文全称Standard Product Unit(标准产品单位)、SKU英文全
 - SPU通常是用来`定位`某件商品。
 1. SPU 是`商品`信息聚合的`最小`单位，是一组`可复用`、`易检索`的标准化信息的`集合`，该集合描述了一个产品的特性。
 1. 我们在浏览[mac官网](https://www.apple.com/cn/mac/)时，上栏有MacBook Air、MacBook Pro、iMac...等等。其中MacBook Air是一个SPU，MacBook Pro也是一个SPU，iMac也是一个SPU。
-简单的说：MacBook Air就是一个SPU，这与颜色和内存大小都无关。总体上指的就是MacBook Air这台笔记本。
+简单的说：`MacBook Air`就是一个SPU，这与颜色和内存大小`都无关`。总体上指的就是`MacBook Air`这台笔记本。
 
 - SKU通常是用来`定价`和管理`库存`。  
 1. SKU 即`库存`进出计量的单位， 可以是以件、盒、托盘等为单位。

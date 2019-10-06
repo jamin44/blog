@@ -48,6 +48,41 @@ s: "abab" p: "ab"
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
         
+        ArrayList<Integer> res = new ArrayList<>();   
+        if(s.length() < p.length())
+            return res;
+        
+        int[] freq_p = new int[26];
+        Arrays.fill(freq_p, 0);
+
+        for(char c : p.toCharArray()) {
+            freq_p[c - 'a'] ++;
+        }
+        
+        int[] freq_s = new int[26];
+        Arrays.fill(freq_s, 0);
+        
+        int l = 0, r = - 1;
+
+        while(r + 1 < s.length()) {
+            r++;
+            freq_s[s.charAt(r) - 'a'] ++;
+            if(r - l + 1 > p.length()) {
+                freq_s[s.charAt(l++) - 'a'] --;
+            }
+            if(r - l + 1 == p.length() && same(freq_s, freq_p)) {
+                res.add(l);
+            }
+        }
+        return res;
+    }
+    
+    private boolean same(int[] freq_s, int[] freq_p) {
+        for(int i = 0; i < 26; i++) {
+            if(freq_s[i] != freq_p[i])
+                return false;
+        }
+        return true;
     }
 }
 ```

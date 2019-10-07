@@ -26,6 +26,7 @@ summary: 编写一个算法来判断一个数是不是“快乐数”。
 
 
 ### 解题思路
+1. 定义`集合Set`来记录每次的n值(set中n值只能是唯一一个)
 
 
 
@@ -33,7 +34,27 @@ summary: 编写一个算法来判断一个数是不是“快乐数”。
 ```java
 class Solution {
     public boolean isHappy(int n) {
-        
+        HashSet<Integer> set = new HashSet<>();
+        set.add(n);
+        while(n != 1) {
+            n = op(n);
+            if(set.contains(n)) {
+                return false;
+            } else {
+                set.add(n);
+            }
+        }
+        return true;
+    }
+    
+    private int op(int x) {
+        int res = 0;
+        while(x > 0) {
+            int t = x % 10;
+            res += t * t;
+            x /= 10;
+        }
+        return res;
     }
 }
 ```

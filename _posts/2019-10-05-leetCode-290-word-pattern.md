@@ -41,13 +41,14 @@ summary: 给定一种规律 pattern 和一个字符串 str ，判断 str 是�
 ```
 
 ### 解题思路
-- HashMap
-将key（a）-value（dog）存在一起，每当遇到一个`字母`就去查看对应的单词。 
-`失败`有两种情况： 
+- HashMap  
+将 `key`（a）- `value`（dog）存在一起，每当遇到一个`字母`就去查看对应的单词。   
+`失败`有两种情况：  
 1. key`存在`，经过查找字母对应的单词和这个单词不匹配； 
 1. key`不存在`，但是这个单词已经被存了；
 
 ### 解题代码
+
 ```java
 class Solution {
     public boolean wordPattern(String pattern, String str) {

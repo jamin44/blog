@@ -29,7 +29,45 @@ summary: 给你一个字符串 S、一个字符串 T，请在字符串 S 里面�
 ```java
 class Solution {
     public String minWindow(String s, String t) {
+        if(s.length() < t.length())
+            return "";
         
+        int[] freq_t = new int[256];
+        for(char c : t.toCharArray()) {
+            freq_t[c] ++;
+        }
+        
+        int[] freq_s = new int[256];
+        int sCnt = 0;
+        
+        int minLength = s.length() + 1;
+        int startIndex = -1;
+        
+        int l = 0, r = - 1;
+        while(l < s.length()) {
+            if(r + 1 < s.length() && sCnt < t.length()) {
+                freq_s[s.charAt(r + 1)] ++;
+                if(freq_s[s.charAt(r + 1)] <= freq_t[s.charAt(r + 1)]) {
+                    sCnt++;
+                }
+                r++;
+            } else {
+                assert(sCnt <= t.length());
+                if(sCnt == t.length() && r - l + 1 < minLength) {
+                    minLength = r -l + 1;
+                    startIndex = l;
+                }
+                freq_s[s.charAt(l)]--;
+                if(freq_s[s.charAt(l)] < freq_t[s.charAt(l)]) {
+                    sCnt--;
+                }
+                l++;
+            }
+        }
+        if(startIndex != -1){
+            // return s.substring(startIndex, minLength); // error
+        }
+        return "";
     }
 }
 ```

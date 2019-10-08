@@ -11,7 +11,8 @@ summary: 给定一个字符串，请将字符串里的字符按照出现的频�
 
 
 ### 题目示例
-- **`示例 1:`**
+- **`示例 1:`**  
+
 ```
 输入:
 "tree"
@@ -24,7 +25,9 @@ summary: 给定一个字符串，请将字符串里的字符按照出现的频�
 因此'e'必须出现在'r'和't'之前。此外，"eetr"也是一个有效的答案。
 ```
 
-- **`示例 2:`**
+
+- **`示例 2:`**   
+
 ```
 输入:
 "cccaaa"
@@ -37,7 +40,8 @@ summary: 给定一个字符串，请将字符串里的字符按照出现的频�
 注意"cacaca"是不正确的，因为相同的字母必须放在一起。
 ```
 
-- **`示例 3:`**
+- **`示例 3:`**  
+
 ```
 输入:
 "Aabb"
@@ -60,6 +64,33 @@ summary: 给定一个字符串，请将字符串里的字符按照出现的频�
 class Solution {
     public String frequencySort(String s) {
         
+        TreeMap<Character, Integer> map = new TreeMap<>();
+        
+        for(int i = 0; i < s.length(); i++) {
+            char p = s.charAt(i);
+            if(!map.containsKey(p)) {
+                map.put(p, 1);
+            } else {
+                map.put(p, map.get(p) + 1);
+            }
+        }
+        
+        PriorityQueue<Character> queue = new PriorityQueue<>(
+            (a, b) -> map.get(b) - map.get(a)
+        );
+
+        for(char key : map.keySet()) {
+            queue.add(key);
+        }
+        
+        StringBuilder res = new StringBuilder();
+        while(!queue.isEmpty()) {
+            char p = queue.remove();
+            for (int i = 0; i < map.get(p); i++) {
+                res.append(p);
+            }
+        }
+        return res.toString();
     }
 }
 ```

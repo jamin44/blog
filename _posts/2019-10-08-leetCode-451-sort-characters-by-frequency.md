@@ -56,7 +56,11 @@ summary: 给定一个字符串，请将字符串里的字符按照出现的频�
 
 
 ### 解题思路
-
+- TreeMap  
+1. Key存储`字母`，Value字母出现`频次`
+1. 遍历s字符串，存储所有字母及其频次
+1. 定义`优先队列`(大顶堆)， 遍历`哈希表`，将`Key`添加进优先队列中。
+1. 遍历优先队列，由于`频次高`的`先出队`，并且字母会对应频次出现`n次`
 
 
 ### 解题代码
@@ -64,7 +68,7 @@ summary: 给定一个字符串，请将字符串里的字符按照出现的频�
 class Solution {
     public String frequencySort(String s) {
         
-        TreeMap<Character, Integer> map = new TreeMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
         
         for(int i = 0; i < s.length(); i++) {
             char p = s.charAt(i);
@@ -74,18 +78,18 @@ class Solution {
                 map.put(p, map.get(p) + 1);
             }
         }
-        
+        // 定义优先队列(频次大的优先)
         PriorityQueue<Character> queue = new PriorityQueue<>(
             (a, b) -> map.get(b) - map.get(a)
         );
-
+        // 遍历哈希表
         for(char key : map.keySet()) {
             queue.add(key);
         }
         
         StringBuilder res = new StringBuilder();
-        while(!queue.isEmpty()) {
-            char p = queue.remove();
+        while(!queue.isEmpty()) { // 遍历优先队列
+            char p = queue.remove(); // 频次高的先出队
             for (int i = 0; i < map.get(p); i++) {
                 res.append(p);
             }

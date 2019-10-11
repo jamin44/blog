@@ -201,18 +201,157 @@ BeanUtils.copyProperties(orderDTO, orderVO, "orderedProducts");
 cglib的`BeanCopier`采用了不同的方法：它不是利用反射对属性进行赋值，而是直接使用ASM的`MethodVisitor`直接编写各属性的`get/set`方法生成class文件，然后进行执行。
 
 优点：字节码技术，速度快，自定义地处理的属性，其他未处理的属性就不行，提供自己自定义转换逻辑的方式  
-缺点：转换逻辑自己写，比较复杂，繁琐；属性名称相同，类型不同，不会拷贝（原始类型和包装类型也被视为类型不同）  
+缺点：转换逻辑自己写，比较复杂，繁琐；属性名称相同，类型不同，不会拷贝（原始类型和包装类型也被视为类型不同） 
+
+**使用方式：**
+```java
+// 构造转换器对象，最后的参数表示是否需要自定义转换器
+BeanCopier beanCopier = BeanCopier.create(orderDTO.getClass(), orderVO.getClass(), true);
+
+// 转换对象，自定义转换器处理特殊字段
+beanCopier.copy(orderDTO, orderVO, (value, target, context) -> {
+    // 原始数据value是Date类型，目标类型target是String
+    if (value instanceof Date) {
+        if ("String".equals(target.getSimpleName())) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+            return sdf.format(value);
+        }
+    }
+	// 未匹配上的字段，原值返回
+    return value;
+});
+```
+
+**报错**
+```
+java.lang.ClassCastException: com.imooc.demo.OrderStatus cannot be cast to java.lang.String
+```
+
+**结果：**
+```java
+// 目标对象
+{
+	"orderDate":"2019-10-09 03:07:13.768",
+	"orderId":201909090001
+}
+```
+
+**结论：**
+1. 字节码技术，速度快
+1. 提供自己自定义转换逻辑的方式
+1. 转换逻辑自己写，比较复杂，繁琐
+1. 属性名称相同，类型不同，不会拷贝（原始类型和包装类型也被视为类型不同）
+
 
 #### 第7种：Dozer框架
 使用以上类库虽然可以不用手动编写`get/set`方法，但是他们都不能对`不同名称`的对象属性进行映射。在定制化的属性映射方面做得比较好的有Dozer，Dozer支持简单属性映射、复杂类型`映射`、`双向映射`、`隐式映射`以及`递归映射`。可使用`xml`或者`注解`进行映射的配置，支持`自动类型`转换，使用方便。但`Dozer底层`是使用reflect包下Field类的set(Object obj, Object value)方法进行属性赋值，执行速度上不是那么理想。
 
-它的`特点`如下：
-- 支持多种数据类型自动转换（双向的）
-- 支持不同属性名之间转换
-- 支持三种映射配置方式（注解方式，API方式，XML方式）
-- 支持配置忽略部分属性
-- 支持自定义属性转换器
-- 嵌套对象深拷贝
+**使用方式：**
+```java
+// 创建转换器对象，强烈建议创建全局唯一的，避免不必要的开销
+DozerBeanMapper mapper = new DozerBeanMapper();
+
+// 加载映射文件
+mapper.addMapping(TransferTest.class.getResourceAsStream("/mapping.xml"));
+
+// 转换
+orderVO = mapper.map(orderDTO, OrderVO.class);
+```
+
+**结果：**
+```json
+// 目标对象
+{
+	"orderDate":"2019-10-09 15:49:24.619",
+	"orderStatus":"CREATED",
+	"orderedProducts":[
+		{
+			"productName":"吉他",
+			"quantity":1
+		},
+		{
+			"productName":"变调夹",
+			"quantity":1
+		}
+	],
+	"paymentType":"CASH",
+	"shopName":"慕课商铺",
+	"totalMoney":"829.99",
+	"userName":"张小喜"
+}
+```
+
+**配置的字段映射文件：**
+```xml
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+  http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <!-- 一组类映射关系 -->
+    <mapping>
+        <!-- 类A和类B -->
+        <class-a>com.imooc.demo.OrderDTO</class-a>
+        <class-b>com.imooc.demo.OrderVO</class-b>
+
+        <!-- 一组需要映射的特殊属性 -->
+        <field>
+            <a>shopInfo.shopName</a>
+            <b>shopName</b>
+        </field>
+
+        <!-- 将嵌套对象中的某个属性值映射到目标对象的指定属性上 -->
+        <field>
+            <a>userInfo.userName</a>
+            <b>userName</b>
+        </field>
+
+        <!-- 将Date对象映射成指定格式的日期字符串 -->
+        <field>
+            <a>orderDate</a>
+            <b date-format="yyyy-MM-dd HH:mm:ss.SSS">orderDate</b>
+        </field>
+
+        <!-- 自定义属性转化器 -->
+        <field custom-converter="com.imooc.demo.DozerCustomConverter">
+            <a>totalMoney</a>
+            <b>totalMoney</b>
+        </field>
+
+        <!-- 忽略指定属性 -->
+        <field-exclude>
+            <a>orderId</a>
+            <b>orderId</b>
+        </field-exclude>
+    </mapping>
+</mappings>
+```
+
+**自定义转换器：**
+```java
+public class DozerCustomConverter implements CustomConverter {
+
+    @Override
+    public Object convert(Object destination, Object source, Class<?> destClass, Class<?> sourceClass) {
+        // 如果原始属性为BigDecimal类型
+        if (source instanceof BigDecimal) {
+            // 目标属性为String类型
+            if ("String".equals(destClass.getSimpleName())) {
+                return String.valueOf(((BigDecimal) source).doubleValue());
+            }
+        }
+        return destination;
+    }
+}
+```
+
+**结论：**
+1. 支持多种数据类型自动转换（双向的）
+1. 支持不同属性名之间转换
+1. 支持三种映射配置方式（注解方式，API方式，XML方式）
+1. 支持配置忽略部分属性
+1. 支持自定义属性转换器
+1. 嵌套对象深拷贝
 
 #### 第八种：MapStruct框架：
 基于JSR269的Java注解处理器，通过注解配置映射关系，在编译时自动生成接口实现类。类似于Lombok的原理一样。
@@ -220,6 +359,8 @@ cglib的`BeanCopier`采用了不同的方法：它不是利用反射对属性进
 支持在代码中注册字段映射，通过javassist类库生成Bean映射的字节码，之后直接加载执行生成的字节码文件。
 #### 第十种：ModelMapper框架：
 基于反射原理进行赋值或者直接对成员变量赋值。
+
+
 
 > 介绍的这些转换方法中，在性能上基本遵循：手动赋值 > cglib	> 反射 > Dozer > 序列化。
 

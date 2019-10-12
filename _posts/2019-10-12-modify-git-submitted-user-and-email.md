@@ -1,19 +1,19 @@
 ---
 layout: post
 title: 修改Git已提交的用户名和邮箱
-categories: [Git]]
+categories: [Git]
 tags: [git]
-summary: SPU英文全称Standard Product Unit(标准产品单位)、SKU英文全称stock keeping unit(库存量单位)
+summary: 修改本地全局Git的提交用户名和邮箱和推送过的git用户名和邮箱
 ---
 
-### 本地全局全局Git的提交用户名和邮箱
+### 本地全局Git的提交用户名和邮箱
 ```sh
 $ git config –global user.name “Your Name”
 $ git config –global user.email “Your Email”
 ```
 > **`注意：`** 这种方法只对之后的`Commit`有效，之前提交过记录就改不了了。
 
-### 强行修改推送过的git记录
+### 强行修改推送过的git用户名和邮箱
 1. 打开本地终端
 1. 打开需要修改的项目的根目录
 1. 复制下面的脚本，可以直接复制到终端命令行里或新建 Shell 脚本

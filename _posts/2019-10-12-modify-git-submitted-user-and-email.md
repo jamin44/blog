@@ -16,29 +16,28 @@ $ git config –global user.email “Your Email”
 ### 强行修改推送过的git用户名和邮箱
 1. 打开本地终端
 1. 打开需要修改的项目的根目录
-1. 复制下面的脚本，可以直接复制到终端命令行里或新建 Shell 脚本，并修改 oldEmail, newName, newEmail 三个变量为你自己的
+1. 复制下面的脚本，可以直接复制到终端命令行里或新建 Shell 脚本，并修改 oldEmail, newName, newEmail 三个变量为你自己的  
+    ```sh
+    #!/bin/bash
 
-```sh
-#!/bin/bash
+    git filter-branch --env-filter '
 
-git filter-branch --env-filter '
+    oldEmail="Your Old Email"
+    newName="Your New Name"
+    newEmail="Your New Email"
 
-oldEmail="Your Old Email"
-newName="Your New Name"
-newEmail="Your New Email"
+    if [ "$GIT_COMMITTER_EMAIL" = "$oldEmail" ]; then
+        export GIT_COMMITTER_NAME="$newName"
+        export GIT_COMMITTER_EMAIL="$newEmail"
+    fi
 
-if [ "$GIT_COMMITTER_EMAIL" = "$oldEmail" ]; then
-    export GIT_COMMITTER_NAME="$newName"
-    export GIT_COMMITTER_EMAIL="$newEmail"
-fi
+    if [ "$GIT_AUTHOR_EMAIL" = "$oldEmail" ]; then
+        export GIT_AUTHOR_NAME="$newName"
+        export GIT_AUTHOR_EMAIL="$newEmail"
+    fi
 
-if [ "$GIT_AUTHOR_EMAIL" = "$oldEmail" ]; then
-    export GIT_AUTHOR_NAME="$newName"
-    export GIT_AUTHOR_EMAIL="$newEmail"
-fi
-
-' --tag-name-filter cat -- --branches --tags
-```
+    ' --tag-name-filter cat -- --branches --tags
+    ```
 
 1. 执行脚本，看到一堆 rewritten 的时候就说明写入完成了
 

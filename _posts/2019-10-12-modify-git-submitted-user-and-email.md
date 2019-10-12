@@ -17,6 +17,7 @@ $ git config –global user.email “Your Email”
 1. 打开本地终端
 1. 打开需要修改的项目的根目录
 1. 复制下面的脚本，可以直接复制到终端命令行里或新建 Shell 脚本，并修改 oldEmail, newName, newEmail 三个变量为你自己的
+
 ```sh
 #!/bin/bash
 

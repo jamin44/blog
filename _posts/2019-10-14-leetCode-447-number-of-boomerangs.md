@@ -54,6 +54,7 @@ class Solution {
                 res += map.get(dis) * (map.get(dis) - 1);
             }
         }
+        return res;
     }
     // 为了避免开根出现浮点型精确不准确的情况，利用两点间距离的平方来比较
     // (AB)^2 = (x1 - x2)^2 + (y1 - y2)^2

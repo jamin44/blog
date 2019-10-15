@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 242.有效的字母异位词
+title: 149.直线上最多的点数
 categories: [LeetCode]
 tags: [lookup Table]
 summary: 给定一个二维平面，平面上有 n 个点，求最多有多少个点在同一条直线上。
@@ -10,7 +10,7 @@ summary: 给定一个二维平面，平面上有 n 个点，求最多有多少�
 给定一个二维平面，平面上有 n 个点，求最多有多少个点在同一条直线上。
 
 ### 题目示例
-- **`示例 1:`**
+**`示例 1:`**
 ```
 输入: [[1,1],[2,2],[3,3]]
 输出: 3
@@ -25,7 +25,7 @@ summary: 给定一个二维平面，平面上有 n 个点，求最多有多少�
 
 ```
 
-- **`示例 2:`**
+**`示例 2:`**
 ```
 输入: [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 输出: 4
@@ -56,4 +56,4 @@ class Solution {
 ```
 
 ### 题目来源
-LeetCode-[242.有效的字母异位词](https://leetcode-cn.com/problems/max-points-on-a-line/)
+LeetCode-[149.直线上最多的点数](https://leetcode-cn.com/problems/max-points-on-a-line/)

@@ -46,14 +46,14 @@ class Solution {
             return false;
         if(k <= 0)
             return false;
-        HashSet<Integer> map = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
         for(int i = 0; i < nums.length; i++) {
-            if(map.contains(nums[i]))
+            if(set.contains(nums[i]))
                 return true;
-            map.add(nums[i]);
-            // 保持map中最多有k个元素
-            if(map.size() == k + 1)
-                map.remove(nums[i - k]);
+            set.add(nums[i]);
+            // 保持set中最多有k个元素
+            if(set.size() == k + 1)
+                set.remove(nums[i - k]);
         }
         return false;
     }

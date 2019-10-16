@@ -31,7 +31,7 @@ summary: 给定一个整数数组，判断是否存在重复元素。
 
 ### 解题思路
 - 查找表 + 滑动窗口
-1. 定义HashSet`查找表`map，以`k + 1长度`为`滑动窗口` 
+1. 定义HashSet`查找表`map
 1. 循环遍历nums数组，如果当前元素在map中`存在`，表示在`窗口范围内`是有效的， 返回`true`。如果不存在，则把元素添加进map中。
 1. `遍历完成`，没有满足的话，返回`false`
 
@@ -45,11 +45,11 @@ class Solution {
     public boolean containsDuplicate(int[] nums) {
         if(nums == null || nums.length <= 1)
             return false;
-        HashSet<Integer> map = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
         for(int i = 0; i < nums.length; i++) {
-            if(map.contains(nums[i]))
+            if(set.contains(nums[i]))
                 return true;
-            map.add(nums[i]);
+            set.add(nums[i]);
         }
         return false;
     }

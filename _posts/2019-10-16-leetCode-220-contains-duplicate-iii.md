@@ -30,7 +30,7 @@ summary: 给定一个整数数组，判断数组中是否有两个不同的索�
 
 ### 解题思路
 - 查找表 + 滑动窗口
-1. 定义HashSet`查找表`map，以`k + 1长度`为`滑动窗口` 
+1. 定义TreeSet`查找表`map，以`k + 1长度`为`滑动窗口` 
 1. 循环遍历nums数组，如果当前元素在map中`存在`，表示在`窗口范围内`是有效的， 返回`true`。如果不存在，则把元素添加进map中。再判断map的`大小`是否等于`k+1`(形成一个`滑动窗口`，保持map中最多有k个元素),如果满足，将窗口（`从左到右`）的第一个元素`去除`。
 1. `遍历完成`，没有满足的话，返回`false`
 
@@ -44,15 +44,16 @@ class Solution {
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         // 这个问题的测试数据在使用int进行加减运算时会溢出
         // 所以使用long
-        TreeSet<Long> map = new TreeSet<>();
+        TreeSet<Long> set = new TreeSet<>();
         for(int i = 0; i < nums.length; i++) {
-        if(map.ceiling((long)nums[i] - (long)t) != null && 
-            map.ceiling((long)nums[i] - (long)t) <= (long)nums[i] + (long)t) {
+        // 查找表中是否有大于等于 nums[i] - t 且小于等于 nums[i] + t 的值
+        if(set.ceiling((long)nums[i] - (long)t) != null && 
+            set.ceiling((long)nums[i] - (long)t) <= (long)nums[i] + (long)t) {
                 return true;
             }
-        map.add((long)nums[i]);
-        if(map.size() == k + 1)
-            map.remove((long)nums[i-k]);
+        set.add((long)nums[i]);
+        if(set.size() == k + 1)
+            set.remove((long)nums[i-k]);
         }
         return false;
     }

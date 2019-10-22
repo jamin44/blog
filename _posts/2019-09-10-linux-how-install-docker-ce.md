@@ -2,7 +2,7 @@
 layout: post
 title: Linux搭建Docker环境
 categories: [Docker]
-tags: [centos, docker]
+tags: [docker]
 summary: Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的镜像中，然后发布到任何流行的 Linux或Windows 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。
 ---
 
@@ -32,9 +32,11 @@ $ yum install -y yum-utils \
   lvm2
 ```
 1. 设置yum源
+```sh
 $ yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
+```
 
 1.安装docker
 - `第一种`: 直接安装最新本
@@ -64,6 +66,7 @@ $ sudo systemctl enable docker # 如果想添加到开机启动
 ```
 - 验证安装是否成功(有client和service两部分表示docker安装启动都成功了)
     ```yml
+    $ docker version
     Version:           19.03.1
     API version:       1.40
     Go version:        go1.12.5

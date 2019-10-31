@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Let's Encrypt免费https证书申请与配置
+title: 免费https通配符证书申请与配置
 categories: [Linux]
 tags: [https]
 summary: Certbot是EFF加密整个互联网的一部分。通过Web进行安全通信依赖于HTTPS，这需要使用数字证书，以便浏览器验证Web服务器的身份。
@@ -49,7 +49,7 @@ expiry
 - certonly：获取或续期证书，但是不安装  
 - renew：在证书快过期时，续期之前获取的所有证书  
 - -d DOMAINS：一个证书支持多个域名，用逗号分隔  
--   
+   
 - --apache：使用 Apache 插件来认证和安装证书  
 - --standalone：运行独立的 web server 来验证  
 - --nginx：使用 Nginx 插件来认证和安装证书  
@@ -58,33 +58,62 @@ expiry
 > 关于域名验证和证书的获取安装，上面提到了`5种`方式：--apache, --standalone, --nginx, --webroot 和 --manual，请根据实际情况选择其一。这里会讲常用Nginx安装方式。
 
 ### 获取证书
-1. 使用 `certbot-auto` 来获取证书但不安装
+1\. 使用 `certbot-auto` 来获取证书但不安装
 ```sh
-$ ./certbot-auto certonly --standalone --email zeffonwu@gmail.com -d thxycn.xin -d www.thxycn.xin
-./certbot-auto certonly --webroot --agree-tos -v -t --email zeffonwu@gmail.com -d www.thxycn.xin -d thxycn.xin
+$ ./certbot-auto --email zeffonwu@gmail.com -d "*.thxycn.xin" -d "thxycn.xin" --manual --preferred-challenges dns-01 certonly --server https://acme-v02.api.letsencrypt.org/directory
 ```
-> **`注意`** 注意将上面的邮箱和域名替换成自己的。上面命令中的 certonly 表示只获取证书，不安装；-d 有两个，表示将要获取的SSL证书绑定两个域名。
+ 注意将上面的邮箱和域名替换成自己的。需要两个-d：第一是通配符域名配置，第二个是主域名配置
 
-1. 获取证书出现如下的 `NOTES`,说明证书创建成功了
-```sh
-IMPORTANT NOTES:
- - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/thxycn.xin/fullchain.pem
-   Your key file has been saved at:
-   /etc/letsencrypt/live/thxycn.xin/privkey.pem
-   Your cert will expire on 2019-11-30. To obtain a new or tweaked
-   version of this certificate in the future, simply run
-   letsencrypt-auto again. To non-interactively renew *all* of your
-   certificates, run "letsencrypt-auto renew"
+> **`注意`**   
+> 1. 执行此命令必须使用 root用户获得文件夹的权限  
+> 1. 域名能访问并且有绑定的公网IP  
+> 1. 必须在此域名绑定的服务器上运行  
+> 1. 会使用80断端口，如果nginx监听80端口，把nginx先关掉  
+
+2\. 需要在域名上新添加一条解析记录(由于设置两个域名，这里解析记录值也要弄两次)  
+(`主机`：_acme-challenge `类型`：TXT `记录值`：L435P35DFHIBAOF34548QoqJHbD162748HUDF)
 ```
-1. 查看证书(证书默认保存在`/etc/letsencrypt/live/thxycn.xin`)
+Please deploy a DNS TXT record under the name
+_acme-challenge.thxycn.xin with the following value:
+
+L435P35DFHIBAOF34548QoqJHbD162748HUDF
+
+Before continuing, verify the record is deployed.
+```
+
+> **`注意`:** 申请通配符证书是要经过DNS认证的，按照提示，前往域名后台添加对应的DNS TXT记录。添加之后，不要心急着按回车，先执行dig xxxx.xxx.com txt确认解析记录是否生效，生效之后再回去按回车确认  
+
+dig 命令安装：
+```sh
+$ yum install bind-utils
+$ dig _acme-challenge.thxycn.xin
+下文出现TXT的值则可以
+;; ANSWER SECTION:                                                                                                                              
+_acme-challenge.thxycn.xin. 600 IN      TXT     "Refivf35ferdfaypw7ZvfnmkbHDSD8433IGA"  
+```
+
+
+3\. 获取证书出现如下的 `NOTES`,说明证书创建成功了
+  ```sh
+  IMPORTANT NOTES:
+  - Congratulations! Your certificate and chain have been saved at:
+    /etc/letsencrypt/live/thxycn.xin/fullchain.pem
+    Your key file has been saved at:
+    /etc/letsencrypt/live/thxycn.xin/privkey.pem
+    Your cert will expire on 2019-11-30. To obtain a new or tweaked
+    version of this certificate in the future, simply run
+    letsencrypt-auto again. To non-interactively renew *all* of your
+    certificates, run "letsencrypt-auto renew"
+  ```
+    
+4\. 查看证书(证书默认保存在`/etc/letsencrypt/live/thxycn.xin`)
 ```
 README  cert.pem  chain.pem  fullchain.pem  privkey.pem
 ```
 而Nginx配置证书我们需要用到的证书是 `fullchain.pem` 和 `privkey.pem`。
 
 ### Nginx证书配置
-1. 配置conf文件（`注意`更换自己的证书）
+1\. 配置conf文件（`注意`更换自己的证书）
 ```
 server {
     listen 443;
@@ -115,28 +144,28 @@ server {
 	rewrite ^/(.*) https://$server_name$request_uri? permanent;
 }
 ```
-1. 验证是否配置成功
+2\. 验证是否配置成功
 使用 `https://thxycn.xin/index.html` 能访问到Nginx的欢迎页面，则配置成功。
 
 ### 自动更新SSL证书
-Let's Encrypt提供的证书只有90天的有效期，所以我们需要写一个脚本在过期前定时重新获取证书。并且证书7天有5次重新获取--Renew & replace the cert (limit ~5 per 7 days)。
-1. 使用 `certbot renew` 自动更新证书
+Let's Encrypt提供的证书只有90天的有效期，所以我们需要写一个脚本在过期前定时重新获取证书。并且证书获取是要频次限制的--每7天5次。(limit ~5 per 7 days)。
+1\. 使用 `certbot renew` 自动更新证书
 ```sh
-$ certbot-auto renew --dry-run # 需要进入/usr/local/certbot目录
+$ certbot-auto renew --manual # 需要进入/usr/local/certbot目录
 或者可以使用强制更新
 $ certbot-auto --force-renew
 ```
 >但是却报错了。原因: 重新更新证书需要启动443端口，而这个端口被nginx占用着  
 >解决方法: 其实很简单，就是在执行`certbot renew --dry-run`命令前，把Nginx停止 `systemctl stop nginx`, 执行成功后就把Nginx启动 `systemctl start nginx`。所以需要用到 `--pre-hook`（这个参数表示执行更新操作之前要做的事情）,`--post-hook`(这个参数表示执行更新操作完成后要做的事情)
 
-1. 定时设置(每1个月，凌晨10分执行)
+1\. 定时设置(每1个月，凌晨10分执行)
 新建 certbot-auto-renew-crontab.sh 文件
 ```sh
 $ mkdir crontab # 与usr同级下新建crontab目录
 $ vi certbot-auto-renew-crontab.sh
 10 0 * 1 * /usr/local/certbot/certbot-auto --force-renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx" # --force-renew 强制更新
 ```
-1. 用 `crontab` 来启动这个定时任务
+2\. 用 `crontab` 来启动这个定时任务
 ```sh
 $ crontab certbot-auto-renew-crontab.sh
 ```

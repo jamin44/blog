@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java API自动生成文档
-categories: [Note]
+categories: [Java]
 tags: [java, springBoot]
 summary: Java API文档自动生成有swagger2和spring restdocs两种受欢迎的工具。
 ---

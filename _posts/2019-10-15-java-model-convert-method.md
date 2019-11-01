@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java常见的模型转换方法
-categories: [Note]
+categories: [Java]
 tags: [java]
 summary: 在进行不同领域对象转换时,原对象和目标对象相同属性的类型不一样,所以对象转换时一些需要考虑的问题。
 ---

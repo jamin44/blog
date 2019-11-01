@@ -56,7 +56,7 @@ $ vi /etc/selinux/config
 ```sh
 把external_url改成部署机器的域名或者IP地址
 $ vi /srv/gitlab/config/gitlab.rb
-external_url 'http://192.168.203.221'
+external_url 'http://10.71.29.81'
 ```
 
 1. 修改/srv/gitlab/data/gitlab-rails/etc/gitlab.yml
@@ -74,7 +74,7 @@ systemctl restart docker
 docker run  …
 ```
 
-1. gitlab的web管理页面就可以正常访问`192.168.203.221:8090`
+1. gitlab的web管理页面就可以正常访问`http://10.71.29.81:8090`
 
 ## 参考文献
 [GitLab文档](https://docs.gitlab.com/omnibus/docker/)

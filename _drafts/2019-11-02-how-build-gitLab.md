@@ -2,7 +2,7 @@
 layout: post
 title: 搭建GitLab私服
 categories: [Git, Docker]
-tags: [springCloud, git, docker]
+tags: [springBoot, git, docker]
 summary: 基于Docker部署GitLab环境搭建，搭建自己的 git 服务器。
 ---
 

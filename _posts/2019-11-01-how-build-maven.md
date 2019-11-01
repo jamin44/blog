@@ -2,7 +2,7 @@
 layout: post
 title: Docker搭建Maven私服
 categories: [Docker]
-tags: [springCloud, docker]
+tags: [springBoot, docker]
 summary: 私服是架设在局域网的一种特殊的远程仓库，目的是代理远程仓库及部署第三方构件。
 ---
 
@@ -13,7 +13,7 @@ Maven私服应用场景 ：
 1. 微服务开发中，实现对微服务接口实现发布与调用。
 1. 正常在微服务开发中，不会直接引入到其他接口源码项目。引入接口jar包进行调用。
 
-## 安装&&登陆&&使用
+## 流程
 
 ### 下载&&启动
 1. Docker拉取一个`nexus3`的镜像

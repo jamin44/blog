@@ -30,6 +30,9 @@ map j goBack
 map k goForward
 ```
 
+1. 官方的快捷方式说明
+<img src="/img/2019/11/how-use-vimium.png" alt="官方的快捷说明"/>
+
 1. 常用的快捷方式(默认)  
 
     |按键|效果|

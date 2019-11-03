@@ -1,0 +1,68 @@
+---
+layout: post
+title: vimium的使用
+categories: [Note]
+tags: [vim]
+summary: 工善其事，必利其器。使用vim的keymap提高效率--Vimium。
+---
+
+## 前言
+- vimium类似于vim的快捷键，是chrome浏览器的一款插件, 可以用键盘代替鼠标的操作, 提高我们的浏览速度和上网体验。
+
+
+## 使用
+
+1. `Vimium`作为Chrome的一个扩展工具，安装当然很简单。在Chrome应用店上安装即可[Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?utm_source=chrome-ntp-icon)
+
+1. 可以`自定义`快捷方式   
+右击右上角扩展的图标 -> 进入选项 -> 在Custom key mappings新增下面快捷内容 -> 点击下面save changes
+```
+// Insert your preferred key mappings here.
+map w scrollUp
+map s scrollDown
+map a scrollLeft
+map d scrollRight
+map l scrollPageDown
+map h scrollPageUp
+map qq scrollToTop
+map ee scrollToBottom
+map j goBack
+map k goForward
+```
+
+1. 常用的快捷方式(默认)  
+
+    |按键|效果|
+    | :--: |:--:|
+    |r|刷新|
+    |f/F|跳转链接|
+    |h/j/k/l|左/下/上/右|
+    |u/d|上/下半页滚动|
+    |gg/G|回到顶部/底部|
+    |H/L|后退/前进|
+    |||
+    |yy|复制当前页面的url到剪切板|
+    |yt|重复当前标签|
+    |||
+    |i/v|编辑模式/可视模式|
+    |gi|定位到页面首个输入框|
+    |2gi|定位到页面第二个输入框|
+    |||
+    |o/O|查找历史记录+书签|
+    |b/B|打开书签 在当前/新窗口|
+    |||
+    |/|进入寻找模式|
+    |n/N|向下/上查找结果|
+    |||
+    |t/T|创建/查看标签页|
+    |^|上一次标签切换|
+    |x/X|关闭/恢复标签|
+    |p/P|搜索剪贴板关键字 在当前/新标签|
+    |J,gT/K,gt|跳转标签页|
+    |g0/g$|切换到首个标签/最后标签|
+    |gu/gU|跳转到当前url上一级/最高级|
+    |ge/gE|编辑url 在当前/新标签|
+    |?|显示帮助|    
+    
+    > 平时要是忘记了快捷方式,也可以在浏览器页面 `?` 显示快捷键帮助
+    
